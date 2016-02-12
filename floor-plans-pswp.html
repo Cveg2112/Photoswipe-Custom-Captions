@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>PSWP</title>
+	<link rel="stylesheet" href="http://photoswipe.s3.amazonaws.com/pswp/dist/photoswipe.css">
+	<link rel="stylesheet" href="http://photoswipe.s3.amazonaws.com/pswp/dist/default-skin/default-skin.css">
+</head>
+<style>
+    /* .gallery-album a img { display: block; } */
+    .pswp__caption { position:absolute; opacity: 1; transition:all .15s ease-in-out; }
+    .pswp__caption.active { opacity: 0; }
+    .pswp__caption__center { transition:all .15s ease-in-out; }
+    .caption-text-section { width: 70%; display: inline-block; vertical-align: middle; transition:all .2s ease-in-out; }
+    .caption-text-section .caption-title, .caption-text-section .caption-copy { display: inline-block; width: 100%; }
+    .caption-text-section .caption-title { font-size: 1.5em; color:#3a9fd2; }
+    .caption-text-section .caption-copy { color: #fff; }
+    .caption-book-section { width: 30%; display: inline-block; text-align: center; vertical-align: middle; transition:all .2s ease-in-out; }
+    .caption-book-section .caption.button { vertical-align: middle; display:inline-block; text-decoration:none; text-transform: uppercase; font-size: 1.2em; padding: .7em .85em; background-color:#3a9fd2; color:#fff; }
+
+    .pswp__caption__center { width: 100%; max-width: 1920px; padding:1em; }
+    .pswp__caption__center * { box-sizing:border-box; font-family: Arial, sans-serif; }
+</style>
+<body>
+
+
+
+
+<div class="gallery-album">
+    <a href="http://www.placehold.it/800x600/22313F/C5EFF7" data-size="800x600" data-title="Test image 1" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, expedita." data-booking="https://secure3.hilton.com">
+        <img src="http://www.placehold.it/200x200/22313F/C5EFF7" alt="" />
+    </a>
+    <a href="http://www.placehold.it/800x468/22313F/C5EFF7" data-size="800x468" data-title="Test image 2" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, expedita." data-booking="https://secure3.hilton.com">
+        <img src="http://www.placehold.it/200x200/22313F/C5EFF7" alt="" />
+    </a>
+    <a href="http://www.placehold.it/500x468/22313F/C5EFF7" data-size="500x468" data-title="Test image 3" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, expedita." data-booking="https://secure3.hilton.com">
+        <img src="http://www.placehold.it/200x200/22313F/C5EFF7" alt="" />
+    </a>
+    <a href="http://www.placehold.it/700x700/22313F/C5EFF7" data-size="700x700" data-title="Test image 4" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, expedita." data-booking="https://secure3.hilton.com">
+        <img src="http://www.placehold.it/200x200/22313F/C5EFF7" alt="" />
+    </a>
+    <a href="http://www.placehold.it/1920x1080/22313F/C5EFF7" data-size="1920x1080" data-title="Test image 5" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, expedita." data-booking="https://secure3.hilton.com">
+        <img src="http://www.placehold.it/200x200/22313F/C5EFF7" alt="" />
+    </a>
+    <a href="http://www.placehold.it/1920x1080/22313F/C5EFF7" data-size="1920x1080" data-title="Test image 6" data-description="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Tenetur, expedita." data-booking="https://secure3.hilton.com">
+        <img src="http://www.placehold.it/200x200/22313F/C5EFF7" alt="" />
+    </a>
+</div>
+
+
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element, as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. PhotoSwipe keeps only 3 slides in DOM to save memory. -->
+        <div class="pswp__container">
+            <!-- don't modify these 3 pswp__item elements, data is added later on -->
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+          </div>
+
+        </div>
+
+</div>
+
+          
+
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="http://photoswipe.s3-eu-west-1.amazonaws.com/pswp/dist/photoswipe.min.js"></script>
+<script src="http://photoswipe.s3-eu-west-1.amazonaws.com/pswp/dist/photoswipe-ui-default.min.js"></script>
+<script>
+
+/*Jquery isOnScreen*/
+!function(t){t.fn.isOnScreen=function(o,e){(null==o||"undefined"==typeof o)&&(o=1),(null==e||"undefined"==typeof e)&&(e=1);var i=t(window),r={top:i.scrollTop(),left:i.scrollLeft()};r.right=r.left+i.width(),r.bottom=r.top+i.height();var f=this.outerHeight(),n=this.outerWidth();if(!n||!f)return!1;var h=this.offset();h.right=h.left+n,h.bottom=h.top+f;var l=!(r.right<h.left||r.left>h.right||r.bottom<h.top||r.top>h.bottom);if(!l)return!1;var m={top:Math.min(1,(h.bottom-r.top)/f),bottom:Math.min(1,(r.bottom-h.top)/f),left:Math.min(1,(h.right-r.left)/n),right:Math.min(1,(r.right-h.left)/n)};return m.left*m.right>=o&&m.top*m.bottom>=e}}(jQuery);
+
+
+
+(function($) {
+    $.fn.photoswipe = function(options) {
+        var galleries = [],
+            _options = options;
+        var init = function($this) {
+            galleries = [];
+            $this.each(function(i, gallery) {
+                galleries.push({
+                    id: i,
+                    items: []
+                });
+                $(gallery).find('a').each(function(k, link) {
+                    var $link = $(link),
+                        size = $link.data('size').split(
+                            'x');
+                    if (size.length != 2) {
+                        throw SyntaxError(
+                            "Missing data-size attribute."
+                        );
+                    }
+                    $link.data('gallery-id', i + 1);
+                    $link.data('photo-id', k);
+                    //CUSTOM VARS
+                    var capDesc = $link.data('description');
+                    var capBook = $link.data('booking');
+                    var item = {
+                        src: link.href,
+                        msrc: link.children[0].getAttribute('src'),
+                        w: parseInt(size[0], 10),
+                        h: parseInt(size[1], 10),
+                        title: "<section class='caption-text-section'><span class='caption-title'>" + $link.data('title') + "</span><span class='caption-copy'>" + capDesc + "</span></section><section class='caption-book-section'><a class='caption button' href=" + capBook + ">Book Now</a></section>",
+                        el: link
+                    }
+                    galleries[i].items.push(item);
+                });
+                $(gallery).on('click', 'a', function(e) {
+                    e.preventDefault();
+                    var gid = $(this).data('gallery-id'),
+                        pid = $(this).data('photo-id');
+                    openGallery(gid, pid);
+                });
+            });
+        }
+        var parseHash = function() {
+            var hash = window.location.hash.substring(1),
+                params = {};
+            if (hash.length < 5) {
+                return params;
+            }
+            var vars = hash.split('&');
+            for (var i = 0; i < vars.length; i++) {
+                if (!vars[i]) {
+                    continue;
+                }
+                var pair = vars[i].split('=');
+                if (pair.length < 2) {
+                    continue;
+                }
+                params[pair[0]] = pair[1];
+            }
+            if (params.gid) {
+                params.gid = parseInt(params.gid, 10);
+            }
+            if (!params.hasOwnProperty('pid')) {
+                return params;
+            }
+            params.pid = parseInt(params.pid, 10);
+            return params;
+        };
+        var openGallery = function(gid, pid) {
+                var pswpElement = document.querySelectorAll('.pswp')[0],
+                    items = galleries[gid - 1].items,
+                    options = {
+                        index: pid,
+                        galleryUID: gid,
+                        getThumbBoundsFn: function(index) {
+                            var thumbnail = items[index].el.children[
+                                    0],
+                                pageYScroll = window.pageYOffset ||
+                                document.documentElement.scrollTop,
+                                rect = thumbnail.getBoundingClientRect();
+                            return {
+                                x: rect.left,
+                                y: rect.top + pageYScroll,
+                                w: rect.width
+                            };
+                        }
+                    };
+                $.extend(options, _options);
+                var gallery = new PhotoSwipe(pswpElement,
+                    PhotoSwipeUI_Default, items, options);
+                
+                //listen for change in pswp then run function
+               
+                gallery.listen('afterChange', function() {  
+                    try{
+                        positionCaption(); 
+                    }catch(e){
+                        // ¯\_(ツ)_/¯
+                    }
+                });
+
+                gallery.init();
+                
+            }
+            // initialize
+        init(this);
+        // Parse URL and open gallery if it contains #&pid=3&gid=1
+        var hashData = parseHash();
+        if (hashData.pid > 0 && hashData.gid > 0) {
+            openGallery(hashData.gid, hashData.pid);
+        }
+        return this;
+    };
+}(jQuery));
+// init with options
+$('.gallery-album').photoswipe({
+    loop: true,
+    getDoubleTapZoom: function(isMouseClick, item) {
+        // isMouseClick          - true if mouse, false if double-tap
+        // item                  - slide object that is zoomed, usually current
+        // item.initialZoomLevel - initial scale ratio of image
+        //                         e.g. if viewport is 700px and image is 1400px,
+        //                              initialZoomLevel will be 0.5
+        if (isMouseClick) {
+            // is mouse click on image or zoom icon
+            // zoom to original
+            return 2;
+            // e.g. for 1400px image:
+            // 0.5 - zooms to 700px
+            // 2   - zooms to 2800px
+        } else {
+            // is double-tap
+            // zoom to original if initial zoom is less than 0.7x,
+            // otherwise to 1.5x, to make sure that double-tap gesture always zooms image
+            return item.initialZoomLevel < 0.7 ? 2 : 2.5;
+        }
+    }
+});
+var tehImage, tehParent, imgWidth, imgNatWidth, imgHeight, imgNatHeight,
+    topOffset, bottomValue, bottomValueNat;
+
+function positionCaption() {
+    // Set image width, height and offsets.
+    // Variables with "Nat" take the images natural height/width (the orginal size before being altered on the page).
+    $('.pswp__item').each(function() {
+        if ($(this).isOnScreen()) {
+            tehImage = $(this).find('.pswp__img').last();
+            tehParent = tehImage.parent();
+            imgWidth = tehImage.width();
+            imgNatWidth = tehImage.prop('naturalWidth');
+            imgHeight = tehImage.height();
+            imgNatHeight = tehImage.prop('naturalHeight');
+            topOffset = tehParent.position().top;
+            console.log(topOffset);
+            bottomValue = $('.pswp__container').height() - (imgHeight + topOffset);
+            bottomValueNat = $('.pswp__container').height() - (imgNatHeight + topOffset);
+            if (imgWidth <= imgNatWidth) {
+                $('.pswp__caption__center').css('width', imgWidth + 'px');
+                $('.pswp__caption').css('bottom', bottomValue);
+            } else {
+                $('.pswp__caption__center').css('width', imgNatWidth + 'px');
+                $('.pswp__caption').css('bottom', bottomValueNat);
+            }
+        }
+    });
+}
+
+$('.gallery-album a').on("click", function() {
+    console.log('timeout before caption');
+    setTimeout(positionCaption, 1000);
+});
+
+$(window).on('resize', function() {
+    console.log('resize caption');
+    positionCaption();
+});
+
+
+
+</script>
+</html>
