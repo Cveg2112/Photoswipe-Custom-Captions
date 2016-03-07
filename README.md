@@ -7,8 +7,7 @@ A caption that moves and resizes accoeding to image width and height.
 
 ##How to add
 
-First off, you'll need the file [which can be found]
-'''Its probably best not to copy script from this page, the formatting for the wiki is terrible and you may end up missing out bits.'''
+First off, you'll need the file which can be found in this repo. I've shoved all the HTML / CSS & JS into the one file, so you'll need to move parts as needed.
 
 You'll need to include the links for the photoswipe JS / CSS:
 
@@ -96,11 +95,11 @@ Then you'll need to add the generic markup for photoswipe:
 </div>
 ```
 
-Next step is to add the script. Make sure that this is added after the call to the '''photoswipe.min.js''' etc. Either add it to '''main.js''' or make a new file which you can load conditionally (something like '''floor-plan-pswp.js''' or whatever tickles your pickle).
+Next step is to add the script. Make sure that this is added after the call to the *photoswipe.min.js* etc. Either add it to *main.js* or make a new file which you can load conditionally (something like *floor-plan-pswp.js* or whatever tickles your pickle).
 
 And then you'll need something like this for the HTML:
 
-'''Data size is needed! You can also add other data attribute tags if you need extra stuff'''
+*Data size is needed! You can also add other data attribute tags if you need extra stuff*
 
 ```html
 
