@@ -153,15 +153,46 @@
                     }
                     $link.data('gallery-id', i + 1);
                     $link.data('photo-id', k);
-                    //CUSTOM VARS
+                    // Data attr values
+                    var capTitle = $link.data('title');
                     var capDesc = $link.data('description');
                     var capBook = $link.data('booking');
+                    var capBookAnalytics = $link.data('analytics');
+                    // Templates
+                    if (capTitle != ""){
+                        var titleTemplate = "<span class='caption-title'>"+ capTitle + "</span>";
+                    } else {
+                        var titleTemplate = "";
+                    }
+
+                    if(capDesc != ""){
+                        var copyTemplate = "<span class='caption-copy'>" + capDesc + "</span>";
+                    } else {
+                        var copyTemplate = "";
+                    }
+
+                    if(capBook != ""){
+                        var bookTemplate = "<a class='caption button' data-button-an="+ capBookAnalytics +" target='_blank' href=" + capBook + ">Book Now</a>";
+                    } else {
+                        var bookTemplate = "";
+                    }
+                    /*var copyTemplate = "<span class='caption-copy'>" + capDesc + "</span>";
+                    var bookTemplate = "<a class='caption button' target='_blank' href=" + capBook + ">Book Now</a>";
+                    // Check if data attrs are empty - make templates empty if so (prevents caption looking strange)
+                    if(capTitle == "" || capTitle == undefined){
+                        titleTemplate = "";
+                    }else if(capDesc == "" || capDesc == undefined){
+                        copyTemplate = "";
+                    }else if(capBook == "" || capBook == undefined || capBook == "undefined" || capBook == null){
+                        bookTemplate = "";
+                    }
+                    console.log(typeof capBook);*/
+
                     var item = {
                         src: link.href,
-                        msrc: link.children[0].getAttribute('src'),
                         w: parseInt(size[0], 10),
                         h: parseInt(size[1], 10),
-                        title: "<section class='caption-text-section'><span class='caption-title'>" + $link.data('title') + "</span><span class='caption-copy'>" + capDesc + "</span></section><section class='caption-book-section'><a class='caption button' href=" + capBook + ">Book Now</a></section>",
+                        title:"<section class='caption-text-section'>" + titleTemplate + copyTemplate + "</section><section class='caption-book-section'>" + bookTemplate + "</section>",
                         el: link
                     }
                     galleries[i].items.push(item);
@@ -226,6 +257,10 @@
                 //listen for change in pswp then run function
                
                 gallery.listen('afterChange', function() {  
+                    
+                });
+
+                gallery.listen('imageLoadComplete', function(index, item) { 
                     try{
                         positionCaption(); 
                     }catch(e){
@@ -247,7 +282,7 @@
     };
 }(jQuery));
 // init with options
-$('.gallery-album').photoswipe({
+$('.photo-gallery-category .clearfix, .gallery-section').photoswipe({
     loop: true,
     getDoubleTapZoom: function(isMouseClick, item) {
         // isMouseClick          - true if mouse, false if double-tap
@@ -270,12 +305,14 @@ $('.gallery-album').photoswipe({
         }
     }
 });
+
 var tehImage, tehParent, imgWidth, imgNatWidth, imgHeight, imgNatHeight,
     topOffset, bottomValue, bottomValueNat;
 
 function positionCaption() {
     // Set image width, height and offsets.
     // Variables with "Nat" take the images natural height/width (the orginal size before being altered on the page).
+    console.log('posCap runs');
     $('.pswp__item').each(function() {
         if ($(this).isOnScreen()) {
             tehImage = $(this).find('.pswp__img').last();
@@ -299,9 +336,9 @@ function positionCaption() {
     });
 }
 
-$('.gallery-album a').on("click", function() {
+$('.photo-gallery-category .clearfix, .gallery-section').on("click", function() {
     console.log('timeout before caption');
-    setTimeout(positionCaption, 1000);
+    setTimeout(positionCaption, 2000);
 });
 
 $(window).on('resize', function() {
