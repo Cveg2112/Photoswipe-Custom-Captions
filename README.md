@@ -1,11 +1,11 @@
 
 
-== Photoswipe custom caption ==
+#Photoswipe custom caption
 
 A caption that moves and resizes accoeding to image width and height.
 
 
-== How me add? ==
+##How to add
 
 First off, you'll need the file [which can be found]
 '''Its probably best not to copy script from this page, the formatting for the wiki is terrible and you may end up missing out bits.'''
@@ -96,9 +96,7 @@ Then you'll need to add the generic markup for photoswipe:
 </div>
 ```
 
-
 Next step is to add the script. Make sure that this is added after the call to the '''photoswipe.min.js''' etc. Either add it to '''main.js''' or make a new file which you can load conditionally (something like '''floor-plan-pswp.js''' or whatever tickles your pickle).
-
 
 And then you'll need something like this for the HTML:
 
@@ -133,7 +131,7 @@ And here be the generic CSS, customise as needed:
 ```
 
 
-== Notes ==
+##Notes
 
 If you need to add additional fields to the caption, you can do so by adding extra '''"data-[name]"''' attributes to the '''<a>''' tag. Then edit the script & HTML template to inlclude this. For example, if you needed to add an extra button link for, say, Gift Vouchers - you can do it like so:
 
@@ -157,42 +155,5 @@ var item = {
     title: "<a class='caption button' href=" + capGiftCTA + ">Buy Gift Voucher</a>",
     el: link
 }
-
-```
-
-
-
-== Description ==
-
-
-
-== Installation ==
-
-
-
-== Extra ==
-
-**  **
-
-
-```php
-
-
-```
-
-
-```javascript
-
-jQuery(document).ready(function($){
-    $('.color-1').wpColorPicker();
-    $('.color-2').wpColorPicker();
-    $('.color-3').wpColorPicker();
-});
-
-```
-
-```php
-
-
 
 ```
